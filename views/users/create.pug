@@ -1,0 +1,16 @@
+extends ../layouts/common
+block content
+    //method POST
+    h1 Create Users
+    if err
+        each error in err   
+            .alert.alert-danger= error
+    form(action="/users/create", method="POST")
+        .form-group
+            label.mr-2(for="name") Name
+            input#name(name="name",type="text",value=values ? values.name : "")
+
+        .form-group
+            label.mr-2(for="phone") Phone
+            input#phone(name="phone",type="text", value=values ? values.phone : "")
+        button.btn.btn-info Create

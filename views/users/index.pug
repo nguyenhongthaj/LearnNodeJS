@@ -1,0 +1,22 @@
+extends ../layouts/common
+block content
+  // method GET
+  
+  h1 User list
+  a.btn.btn-primary(href="users/create") CLICK here to Create
+  .d-flex.align-items-center.mt-3
+    form.d-flex.ml-auto(action="users/search" method="GET")
+      input(type="text" name ="q")
+      button.d-flex(type="button" class="btn btn-info ml-1") Search
+  table.table
+    tr
+      th Name
+      th Phone
+      th Views
+
+    each user in users
+      tr    
+      td= user.name
+      td= user.phone
+      td
+        a.btn.btn-light(href="/users/" + user.id) Views
