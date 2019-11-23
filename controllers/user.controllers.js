@@ -22,6 +22,7 @@ module.exports.search = async function(request, response){
 };
 /*--------------create---********/
 module.exports.create =function(req,res){
+
 	res.render('users/create');
 
 }
@@ -35,28 +36,14 @@ module.exports.get = async function(req,res){
 	});
 }
 /*--------------createPost---********/
-module.exports.postCreate = function(req,res){
-	var errors = [];
-	if(!req.body.name)
-	{
-		errors.push('Name is Require !!!');
-	}
-	if(!req.body.phone){
-		errors.push('Phone is Require !!!');
-	}
-	if(errors.length){
-		res.render('users/create',{
-			err : errors,
-			values : req.body
-		});	
-		return ;
-	}
-	else{
+module.exports.postCreate = function(req,res){	
+		//console.log(res.locals);
 		Users.create(req.body);
 		res.redirect('/users');
-	}
-
-};
-
-
-
+}
+/*---------------cookie---*/
+module.exports.cookie = function(req, res, next){
+		console.log(req.cookies);
+		res.cookie('name', 12345);
+		res.send('Hello-Cookie');
+}

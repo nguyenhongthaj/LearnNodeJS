@@ -4,6 +4,8 @@ var app = express();
 /* Khai bao req.body*/
 var bodyParser = require('body-parser');
 var userRouters = require('./routes/user.route');
+/*Khai vao cookie*/
+var cookieParser = require('cookie-parser');
 /*Khai bao mongo*/
 
 var mongoose = require('mongoose');
@@ -17,6 +19,7 @@ app.set('views', './views');
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
+app.use(cookieParser());
 //#######################################################################33
 app.get('/',function(request,response){
 	response.render('index',{
