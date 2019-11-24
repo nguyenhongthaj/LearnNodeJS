@@ -6,11 +6,20 @@ block content
         each error in err   
             .alert.alert-danger= error
     form(action="/users/create", method="POST")
-        .form-group
-            label.mr-2(for="name") Name
+        .form-group.d-flex.flex-column.bd-highlight.mb-3
+            label(for="name") Name
             input#name(name="name",type="text",value=values ? values.name : "")
 
-        .form-group
-            label.mr-2(for="phone") Phone
+        .form-group.d-flex.flex-column.bd-highlight.mb-3
+            label(for="phone") Phone
             input#phone(name="phone",type="text", value=values ? values.phone : "")
+
+        .form-group.d-flex.flex-column.bd-highlight.mb-3
+            label(for="email") Email
+            input#email(name="email",type="text", value=values ? values.phone : "")
+
+        .form-group.d-flex.flex-column.bd-highlight.mb-3
+            label(for="password") Password
+            input#password(name="password",type="text", value=values ? values.phone : "")
         button.btn.btn-info Create
+        

@@ -3,7 +3,9 @@ var express = require('express');
 var app = express();
 /* Khai bao req.body*/
 var bodyParser = require('body-parser');
+/*-------------------*/
 var userRouters = require('./routes/user.route');
+var authRouters = require('./routes/auth.route');
 /*Khai vao cookie*/
 var cookieParser = require('cookie-parser');
 /*Khai bao mongo*/
@@ -28,6 +30,7 @@ app.get('/',function(request,response){
 });
 
 app.use('/users', userRouters);
+app.use('/auth', authRouters);
 
 app.listen(port, function(){
 	console.log('Sever listening on port '+ port);

@@ -7,6 +7,12 @@ module.exports.postCreate =  function(req, res, next){
 	if(!req.body.phone){
 		errors.push('Phone is Require !!!');
 	}
+	if(!req.body.email){
+		errors.push('Email is Require !!!');
+	}
+	if(!req.body.password){
+		errors.push('Password is Require !!!');
+	}
 	if(errors.length){
 		res.render('users/create',{
 			err : errors,
