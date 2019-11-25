@@ -6,6 +6,8 @@ var bodyParser = require('body-parser');
 /*-------------------*/
 var userRouters = require('./routes/user.route');
 var authRouters = require('./routes/auth.route');
+
+var authMiddleware = require('./middlewares/auth.middleware');
 /*Khai vao cookie*/
 var cookieParser = require('cookie-parser');
 /*Khai bao mongo*/
@@ -29,7 +31,7 @@ app.get('/',function(request,response){
 	});
 });
 
-app.use('/users', userRouters);
+app.use('/users', authMiddleware.requireAuth, userRouters);
 app.use('/auth', authRouters);
 
 app.listen(port, function(){

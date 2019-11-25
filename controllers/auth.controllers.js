@@ -18,7 +18,6 @@ module.exports.postLogin = async function(req, res){
         });
         return;
     }
-    //console.log(user[0].password);
     if(user[0].password !== password){
         res.render('auth/login', {
             errors: [
@@ -29,5 +28,6 @@ module.exports.postLogin = async function(req, res){
         return;
     }     
 
+    res.cookie('userId', user[0].id);
     res.redirect('/users');
 }
