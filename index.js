@@ -23,7 +23,7 @@ app.set('views', './views');
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
-app.use(cookieParser());
+app.use(cookieParser('abcdefght'));
 //#######################################################################33
 app.get('/',function(request,response){
 	response.render('index',{

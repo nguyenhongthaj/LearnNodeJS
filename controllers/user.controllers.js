@@ -1,4 +1,5 @@
 //var db = require('../db');
+var md5 = require('md5');
 var Users = require('../models/user.model')
 /*--------------Index---********/
 module.exports.index = async function(request, response){
@@ -38,6 +39,7 @@ module.exports.get = async function(req,res){
 /*--------------createPost---********/
 module.exports.postCreate = function(req,res){	
 		//console.log(res.locals);
+		req.body.password = md5(req.body.password);
 		Users.create(req.body);
 		res.redirect('/users');
 }

@@ -5,7 +5,7 @@ block content
     if errors
         each error in errors   
             .alert.alert-danger= error
-    form( method="POST")
+    form(action="#" method="POST")
         .form-group.d-flex.flex-column.bd-highlight.mb-3
             label(for="email") Email
             input#email(name="email",type="text",value=values ? values.email : "") 

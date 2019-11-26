@@ -6,7 +6,11 @@ var userSchema = new mongoose.Schema({
     phone: String,
     email: String,
     password: String,
-});
+},
+{
+    versionKey:false
+}
+);
 
 var User = mongoose.model('User', userSchema,'users');
 module.exports = User;
