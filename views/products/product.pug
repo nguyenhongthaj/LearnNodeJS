@@ -1,0 +1,25 @@
+extends ../layouts/common
+block content
+    //method POST
+    h1 Create Product
+    if err
+        each error in err   
+            .alert.alert-danger= error
+    form(action="/products/product", method="POST")
+        .form-group.d-flex.flex-column.bd-highlight.mb-3
+            label(for="name") Name
+            input#name(name="name",type="text",value=values ? values.name : "")
+
+        .form-group.d-flex.flex-column.bd-highlight.mb-3
+            label(for="img") Image
+            input#img(name="image",type="text", value=values ? values.phone : "")
+
+        .form-group.d-flex.flex-column.bd-highlight.mb-3
+            label(for="des") Description
+            input#des(name="description",type="text", value=values ? values.phone : "")
+
+        .form-group.d-flex.flex-column.bd-highlight.mb-3
+            label(for="price") Price
+            input#price(name="price",type="text", value=values ? values.phone : "")
+        button.btn.btn-info Create
+        

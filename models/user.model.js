@@ -6,11 +6,11 @@ var userSchema = new mongoose.Schema({
     phone: String,
     email: String,
     password: String,
-},
-{
-    versionKey:false
-}
+    },
+    {
+        versionKey:false
+    }
 );
 
-var User = mongoose.model('User', userSchema,'users');
+var User = mongoose.model('User', userSchema,'users');//tham số thứ 3 'users'  là tên collection
 module.exports = User;

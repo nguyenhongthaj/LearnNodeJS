@@ -1,13 +1,18 @@
+// .env
+require('dotenv').config()
 /* Khai bao Express - va port :3000*/
 var express = require('express');
 var app = express();
 /* Khai bao req.body*/
 var bodyParser = require('body-parser');
-/*-------------------*/
+
+/*-----------Routers--------*/
 var userRouters = require('./routes/user.route');
 var authRouters = require('./routes/auth.route');
+var productsRouters = require('./routes/product.route');
 
 var authMiddleware = require('./middlewares/auth.middleware');
+
 /*Khai vao cookie*/
 var cookieParser = require('cookie-parser');
 /*Khai bao mongo*/
@@ -23,7 +28,7 @@ app.set('views', './views');
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
-app.use(cookieParser('abcdefght'));
+app.use(cookieParser(process.env.SESSION_SECRET));
 //#######################################################################33
 app.get('/',function(request,response){
 	response.render('index',{
@@ -33,6 +38,7 @@ app.get('/',function(request,response){
 
 app.use('/users', authMiddleware.requireAuth, userRouters);
 app.use('/auth', authRouters);
+app.use('/products',productsRouters);
 
 app.listen(port, function(){
 	console.log('Sever listening on port '+ port);

@@ -3,7 +3,8 @@ block content
   // method GET
   
   h1 User list
-  a.btn.btn-primary(href="users/create") CLICK here to Create
+  a.btn.btn-primary.d-inline(href="users/create") CLICK here to Create User
+  a.btn.btn-primary.d-inline.ml-3(href="products/product") CLICK here to Create Product
   .d-flex.align-items-center.mt-3
     form.d-flex.ml-auto(action="users/search" method="GET")
       input(type="text" name ="q")
