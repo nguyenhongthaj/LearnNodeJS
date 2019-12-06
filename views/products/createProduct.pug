@@ -5,7 +5,7 @@ block content
     if err
         each error in err   
             .alert.alert-danger= error
-    form(action="/products/product", method="POST")
+    form(action="/products/createProduct", method="POST")
         .form-group.d-flex.flex-column.bd-highlight.mb-3
             label(for="name") Name
             input#name(name="name",type="text",value=values ? values.name : "")

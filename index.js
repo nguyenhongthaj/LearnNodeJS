@@ -38,7 +38,7 @@ app.get('/',function(request,response){
 
 app.use('/users', authMiddleware.requireAuth, userRouters);
 app.use('/auth', authRouters);
-app.use('/products',productsRouters);
+app.use('/products', authMiddleware.requireAuth, productsRouters);
 
 app.listen(port, function(){
 	console.log('Sever listening on port '+ port);

@@ -1,0 +1,16 @@
+extends ../layouts/common
+block content
+  // method GET
+
+  h1 Products
+  a.btn.btn-primary.d-inline.ml-3(href="products/createProduct") CLICK here to Create Product
+  div.container
+    div.row
+      each product in Product
+        div.col-sm-3
+          img(src=product.image).mt-3
+          div.border
+            p= product.name
+            p= product.description
+            p= product.price
+            button.btn.btn-info(type='button') Detail
