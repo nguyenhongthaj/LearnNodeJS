@@ -1,5 +1,10 @@
 h1 Views User
 p   
- b Name
+ h2 Information
  hr
- span= user.name
+ tr
+    td
+        img(src='../'+ user.avatar, width=64)
+    h1= user.name
+    td= user.email
+    p= user.phone

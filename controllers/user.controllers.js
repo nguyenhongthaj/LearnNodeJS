@@ -40,6 +40,7 @@ module.exports.get = async function(req,res){
 module.exports.postCreate = function(req,res){	
 		//console.log(res.locals);
 		req.body.password = md5(req.body.password);
+		req.body.avatar = req.file.path.split('\\').slice(1).join('\\');
 		Users.create(req.body);
 		res.redirect('/users');
 }

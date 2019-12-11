@@ -17,9 +17,11 @@ block content
       th Views
 
     each user in users
-      tr    
-      td= user.name
-      td= user.phone
-      td= user.email
-      td
-        a.btn.btn-light(href="/users/" + user.id) Views
+      tr
+        td
+          img(src= user.avatar, width=64)
+        td= user.name
+        td= user.phone
+        td= user.email
+        td
+          a.btn.btn-light(href="/users/" + user.id) Views

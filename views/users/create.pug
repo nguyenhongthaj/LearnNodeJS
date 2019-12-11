@@ -5,11 +5,10 @@ block content
     if err
         each error in err   
             .alert.alert-danger= error
-    form(action="/users/create", method="POST")
+    form(action="/users/create", method="POST", enctype="multipart/form-data")
         .form-group.d-flex.flex-column.bd-highlight.mb-3
             label(for="name") Name
             input#name(name="name",type="text",value=values ? values.name : "")
-
         .form-group.d-flex.flex-column.bd-highlight.mb-3
             label(for="phone") Phone
             input#phone(name="phone",type="text", value=values ? values.phone : "")
@@ -21,5 +20,8 @@ block content
         .form-group.d-flex.flex-column.bd-highlight.mb-3
             label(for="password") Password
             input#password(name="password",type="password", value=values ? values.phone : "")
+        .form-group.d-flex.flex-column.bd-highlight.mb-3
+            label(for="avatar") Avatar
+            input#avatar.form-control-file(name="avatar", type="file")
         button.btn.btn-info Create
         
