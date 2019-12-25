@@ -17,3 +17,6 @@ module.exports.postProduct = function(req, res){
     Product.create(req.body);
     res.redirect('/products');
 }
+module.exports.detail = function(req,res){
+    res.render('products/detail')
+}

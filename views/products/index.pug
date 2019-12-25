@@ -13,4 +13,6 @@ block content
             p= product.name
             p= product.description
             p= product.price
-            button.btn.btn-info(type='button') Detail
+            div.mb-1.ml-1
+              a.btn.btn-info(href='/products/detail') Detail
+              a.btn.btn-info.ml-3(href='/cart/add/'+ product.id) Add to Cart

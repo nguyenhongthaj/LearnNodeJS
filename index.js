@@ -10,8 +10,11 @@ var bodyParser = require('body-parser');
 var userRouters = require('./routes/user.route');
 var authRouters = require('./routes/auth.route');
 var productsRouters = require('./routes/product.route');
+var cartRoute = require('./routes/cart.route');
 
+/*-----------Middleware------*/
 var authMiddleware = require('./middlewares/auth.middleware');
+var sessionMiddleware = require('./middlewares/session.middleware');
 
 /*Khai vao cookie*/
 var cookieParser = require('cookie-parser');
@@ -29,6 +32,7 @@ app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
 app.use(cookieParser(process.env.SESSION_SECRET));
+app.use(sessionMiddleware);
 //#######################################################################33
 app.get('/',function(request,response){
 	response.render('index',{
@@ -38,7 +42,8 @@ app.get('/',function(request,response){
 
 app.use('/users', authMiddleware.requireAuth, userRouters);
 app.use('/auth', authRouters);
-app.use('/products', authMiddleware.requireAuth, productsRouters);
+app.use('/products', productsRouters);
+app.use('/cart',cartRoute);
 
 app.listen(port, function(){
 	console.log('Sever listening on port '+ port);
