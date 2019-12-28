@@ -11,12 +11,21 @@ module.exports.addToCart = async function(req, res, next){
     if(!userId){
         await Cart.updateOne({idCard : sessionId},{$push:{productId:productId}});
     }
-    await Cart.updateOne({idCard : sessionId},{$set:{productId:productId,userId:userId}});
+    else{
+        await Cart.updateOne({idCard : sessionId},{$push:{productId:productId},$set:{userId:userId}});
+    }
 
     
     res.redirect('/products');
 
 }
 module.exports.countCart = async function(req, res, next){
-    
+    var userId = await req.signedCookies.userId;
+    var count = await Cart.find({
+        userId: userId[0]
+    })
+    console.log(count);
+    if(!userId){
+
+    }
 }
