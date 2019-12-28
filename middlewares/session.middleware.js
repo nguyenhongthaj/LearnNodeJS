@@ -7,7 +7,7 @@ module.exports = function(req, res, next){
             signed: true
          });
         sessionSchema = new Sessions({
-            id: sessionId
+            idCard: sessionId,
          });
         //sessionSchema.save();
         Sessions.create(sessionSchema);
